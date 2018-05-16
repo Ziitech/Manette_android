@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Manette</string>
+    <string name="home">Acceuil</string>
+    <string name="hello">Hello World</string>
+
+    <string name="action_save">Save</string>
+    <string name="action_setting">Setting</string>
+    <string name="action_help">Aide</string>
+</resources>

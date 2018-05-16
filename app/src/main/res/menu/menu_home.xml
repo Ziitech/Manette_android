@@ -1,0 +1,21 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/action_save"
+        android:icon="@drawable/ic_save"
+        android:title="@string/action_save"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/action_setting"
+        android:layout_height="wrap_content"
+        android:title="@string/action_setting"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_aide"
+        android:layout_height="match_parent"
+        android:title="@string/action_help"
+        app:showAsAction="never" />
+</menu>
