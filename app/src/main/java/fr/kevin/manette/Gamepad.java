@@ -58,39 +58,39 @@ public class Gamepad extends AppCompatActivity {
                     int direction = js.get8Direction();
                     if(direction == JoyStickClass.STICK_UP) {
                         textView5.setText("Direction : Up");
-                        Connexion b1 = new Connexion();
+                        ConnexionTCP b1 = new ConnexionTCP();
                         b1.execute("up");
                     } else if(direction == JoyStickClass.STICK_UPRIGHT) {
                         textView5.setText("Direction : Up Right");
-                        Connexion b1 = new Connexion();
+                        ConnexionTCP b1 = new ConnexionTCP();
                         b1.execute("up_right");
                     } else if(direction == JoyStickClass.STICK_RIGHT) {
                         textView5.setText("Direction : Right");
-                        Connexion b1 = new Connexion();
+                        ConnexionTCP b1 = new ConnexionTCP();
                         b1.execute("right");
                     } else if(direction == JoyStickClass.STICK_DOWNRIGHT) {
                         textView5.setText("Direction : Down Right");
-                        Connexion b1 = new Connexion();
+                        ConnexionTCP b1 = new ConnexionTCP();
                         b1.execute("down_right");
                     } else if(direction == JoyStickClass.STICK_DOWN) {
                         textView5.setText("Direction : Down");
-                        Connexion b1 = new Connexion();
+                        ConnexionTCP b1 = new ConnexionTCP();
                         b1.execute("down");
                     } else if(direction == JoyStickClass.STICK_DOWNLEFT) {
                         textView5.setText("Direction : Down Left");
-                        Connexion b1 = new Connexion();
+                        ConnexionTCP b1 = new ConnexionTCP();
                         b1.execute("down_left");
                     } else if(direction == JoyStickClass.STICK_LEFT) {
                         textView5.setText("Direction : Left");
-                        Connexion b1 = new Connexion();
+                        ConnexionTCP b1 = new ConnexionTCP();
                         b1.execute("left");
                     } else if(direction == JoyStickClass.STICK_UPLEFT) {
                         textView5.setText("Direction : Up Left");
-                        Connexion b1 = new Connexion();
+                        ConnexionTCP b1 = new ConnexionTCP();
                         b1.execute("up_left");
                     } else if(direction == JoyStickClass.STICK_NONE) {
                         textView5.setText("Direction : Center");
-                        Connexion b1 = new Connexion();
+                        ConnexionTCP b1 = new ConnexionTCP();
                         b1.execute("center");
                     }
                 } else if(arg1.getAction() == MotionEvent.ACTION_UP) {
@@ -108,7 +108,7 @@ public class Gamepad extends AppCompatActivity {
             public boolean onTouch(View v, MotionEvent event) {
                 if(event.getAction() == MotionEvent.ACTION_DOWN){
                     button_a.setBackground(getResources().getDrawable(R.drawable.ic_a_clic));
-                    Connexion b1 = new Connexion();
+                    ConnexionTCP b1 = new ConnexionTCP();
                     b1.execute("a");
                 }
                 if(event.getAction() == MotionEvent.ACTION_UP){
@@ -123,7 +123,7 @@ public class Gamepad extends AppCompatActivity {
             public boolean onTouch(View v, MotionEvent event) {
                 if(event.getAction() == MotionEvent.ACTION_DOWN){
                     button_b.setBackground(getResources().getDrawable(R.drawable.ic_b_clic));
-                    Connexion b1 = new Connexion();
+                    ConnexionTCP b1 = new ConnexionTCP();
                     b1.execute("b");
                 }
                 if(event.getAction() == MotionEvent.ACTION_UP){
@@ -138,7 +138,7 @@ public class Gamepad extends AppCompatActivity {
             public boolean onTouch(View v, MotionEvent event) {
                 if(event.getAction() == MotionEvent.ACTION_DOWN){
                     button_x.setBackground(getResources().getDrawable(R.drawable.ic_x_clic));
-                    Connexion b1 = new Connexion();
+                    ConnexionTCP b1 = new ConnexionTCP();
                     b1.execute("x");
                 }
                 if(event.getAction() == MotionEvent.ACTION_UP){
@@ -153,7 +153,7 @@ public class Gamepad extends AppCompatActivity {
             public boolean onTouch(View v, MotionEvent event) {
                 if(event.getAction() == MotionEvent.ACTION_DOWN){
                     button_y.setBackground(getResources().getDrawable(R.drawable.ic_y_clic));
-                    Connexion b1 = new Connexion();
+                    ConnexionTCP b1 = new ConnexionTCP();
                     b1.execute("y");
                 }
                 if(event.getAction() == MotionEvent.ACTION_UP){

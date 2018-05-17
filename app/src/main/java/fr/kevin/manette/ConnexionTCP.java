@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.net.Socket;
 import java.io.PrintWriter;
 
-public class Connexion extends AsyncTask<String,Void,Void>
+public class ConnexionTCP extends AsyncTask<String,Void,Void>
 {
     Socket socket;
     PrintWriter writer;
