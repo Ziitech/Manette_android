@@ -108,8 +108,8 @@ public class Gamepad extends AppCompatActivity {
             public boolean onTouch(View v, MotionEvent event) {
                 if(event.getAction() == MotionEvent.ACTION_DOWN){
                     button_a.setBackground(getResources().getDrawable(R.drawable.ic_a_clic));
-                    ConnexionTCP b1 = new ConnexionTCP();
-                    b1.execute("a");
+                    ConnexionTCP b2 = new ConnexionTCP();
+                    b2.execute("a");
                 }
                 if(event.getAction() == MotionEvent.ACTION_UP){
                     button_a.setBackground(getResources().getDrawable(R.drawable.ic_a));
@@ -123,8 +123,8 @@ public class Gamepad extends AppCompatActivity {
             public boolean onTouch(View v, MotionEvent event) {
                 if(event.getAction() == MotionEvent.ACTION_DOWN){
                     button_b.setBackground(getResources().getDrawable(R.drawable.ic_b_clic));
-                    ConnexionTCP b1 = new ConnexionTCP();
-                    b1.execute("b");
+                    ConnexionTCP b3 = new ConnexionTCP();
+                    b3.execute("b");
                 }
                 if(event.getAction() == MotionEvent.ACTION_UP){
                     button_b.setBackground(getResources().getDrawable(R.drawable.ic_b));
@@ -138,8 +138,8 @@ public class Gamepad extends AppCompatActivity {
             public boolean onTouch(View v, MotionEvent event) {
                 if(event.getAction() == MotionEvent.ACTION_DOWN){
                     button_x.setBackground(getResources().getDrawable(R.drawable.ic_x_clic));
-                    ConnexionTCP b1 = new ConnexionTCP();
-                    b1.execute("x");
+                    ConnexionTCP b4 = new ConnexionTCP();
+                    b4.execute("x");
                 }
                 if(event.getAction() == MotionEvent.ACTION_UP){
                     button_x.setBackground(getResources().getDrawable(R.drawable.ic_x));
@@ -153,8 +153,8 @@ public class Gamepad extends AppCompatActivity {
             public boolean onTouch(View v, MotionEvent event) {
                 if(event.getAction() == MotionEvent.ACTION_DOWN){
                     button_y.setBackground(getResources().getDrawable(R.drawable.ic_y_clic));
-                    ConnexionTCP b1 = new ConnexionTCP();
-                    b1.execute("y");
+                    ConnexionTCP b5 = new ConnexionTCP();
+                    b5.execute("y");
                 }
                 if(event.getAction() == MotionEvent.ACTION_UP){
                     button_y.setBackground(getResources().getDrawable(R.drawable.ic_y));
