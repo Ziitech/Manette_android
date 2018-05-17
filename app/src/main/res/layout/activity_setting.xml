@@ -25,55 +25,112 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:fontFamily="casual" />
 
-    <ImageButton
-        android:id="@+id/scan"
-        android:layout_width="149dp"
-        android:layout_height="130dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="8dp"
-        android:layout_marginTop="24dp"
-        android:background="@android:color/transparent"
-        app:layout_constraintBottom_toTopOf="@+id/devicesListView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/titre"
-        app:layout_constraintVertical_bias="0.597"
-        app:srcCompat="@drawable/bluetooth_off" />
-
     <Button
         android:id="@+id/pairdBtn"
         android:layout_width="93dp"
         android:layout_height="37dp"
-        android:layout_marginStart="8dp"
-        android:text="Pair"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/bluetoothStatus" />
-
-    <TextView
-        android:id="@+id/bluetoothStatus"
-        android:layout_width="137dp"
-        android:layout_height="18dp"
-        android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="136dp"
+        android:text="Pair"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toEndOf="@+id/devicesListView"
+        app:layout_constraintTop_toBottomOf="@+id/titre" />
 
     <ListView
         android:id="@+id/devicesListView"
         android:layout_width="136dp"
         android:layout_height="59dp"
-        android:layout_marginBottom="24dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="136dp"
+        app:layout_constraintStart_toEndOf="@+id/scan2"
+        app:layout_constraintTop_toBottomOf="@+id/titre" />
+
+    <ImageButton
+        android:id="@+id/wifi"
+        android:layout_width="94dp"
+        android:layout_height="116dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="52dp"
+        android:background="@android:color/transparent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scan2"
+        app:srcCompat="@drawable/ic_wifi_off" />
+
+    <ImageButton
+        android:id="@+id/scan2"
+        android:layout_width="78dp"
+        android:layout_height="112dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="124dp"
+        android:background="@android:color/transparent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/titre"
+        app:srcCompat="@drawable/bluetooth_off" />
+
+    <TextView
+        android:id="@+id/bluetoothStatus"
+        android:layout_width="137dp"
+        android:layout_height="30dp"
+        android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/bluetoothStatus"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.108"
+        app:layout_constraintStart_toEndOf="@+id/scan2"
+        app:layout_constraintTop_toBottomOf="@+id/devicesListView"
+        app:layout_constraintVertical_bias="0.013" />
+
+    <EditText
+        android:id="@+id/ip"
+        android:layout_width="205dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="60dp"
+        android:ems="10"
+        android:hint="IP"
+        android:inputType="text"
+        android:textColorLink="@color/principal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/wifi"
+        app:layout_constraintTop_toBottomOf="@+id/bluetoothStatus"
+        app:layout_constraintVertical_bias="0.034" />
+
+    <EditText
+        android:id="@+id/port"
+        android:layout_width="101dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:hint="Port"
+        android:inputType="number"
+        android:textColorLink="@color/principal"
+        app:layout_constraintStart_toEndOf="@+id/wifi"
+        app:layout_constraintTop_toBottomOf="@+id/ip" />
+
+    <Button
+        android:id="@+id/buttonAdd"
+        android:layout_width="93dp"
+        android:layout_height="37dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="ADD"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.777"
+        app:layout_constraintStart_toEndOf="@+id/port"
+        app:layout_constraintTop_toBottomOf="@+id/ip" />
 
 
 </android.support.constraint.ConstraintLayout>

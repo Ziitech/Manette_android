@@ -9,6 +9,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.drawable.Drawable;
+import android.net.wifi.WifiManager;
+import android.net.wifi.aware.WifiAwareManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.SystemClock;
@@ -19,6 +21,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -34,7 +37,9 @@ import java.util.UUID;
 
 public class Setting extends AppCompatActivity {
 
-    // Composant
+    private final String TAG = Setting.class.getSimpleName();
+
+    //-------------------Bluetooth-------------------
     /**
      * Label qui affiche le statut
      */
@@ -63,8 +68,6 @@ public class Setting extends AppCompatActivity {
      * Affichage de la liste des appareils
      */
     private ListView devicesListView;
-
-    private final String TAG = Setting.class.getSimpleName();
     /**
      * Gestionnaire principal qui recevra des notifications de rappel
      */
@@ -73,14 +76,50 @@ public class Setting extends AppCompatActivity {
      * Bluetooth en tache de fond pour envoyer et recevoir des données
      */
     private ConnectedThread mConnectedThread;
-    private BluetoothSocket mBTSocket = null; // bi-directional client-to-client data path
+    private BluetoothSocket mBTSocket = null;
 
     private static final UUID BTMODULEUUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB"); // "random" unique identifiant
 
 
-    // #defines for identifying shared types between calling functions
-    private final static int MESSAGE_READ = 2; // used in bluetooth handler to identify message update
-    private final static int CONNECTING_STATUS = 3; // used in bluetooth handler to identify message status
+    //------------------- Wifi-------------------
+    /**
+     * Gestion du wifi
+     */
+    private WifiManager wifiManager;
+    /**
+     * Image Bouton du wifi
+     */
+    private ImageButton wifi;
+    /**
+     * Pour déterminer si le wifi et actif ou inacif
+     */
+    private Boolean wifiOnOff;
+    /**
+     *  Bouton pour ajouter une adresse ip
+     */
+    private Button addIP;
+    /**
+     * Zone de text Ip
+     */
+    private EditText ip;
+    /**
+     * Zone de text port
+     */
+    private EditText port;
+    /**
+     *  IP enregistré
+     */
+    private static String ip_text;
+    /**
+     *  port enregistré
+     */
+    private static String port_text;
+
+
+
+    //#defines pour identifier les types partagés entre les fonctions d'appel
+    private final static int MESSAGE_READ = 2; // utilisé dans le gestionnaire bluetooth pour identifier la mise à jour des messages
+    private final static int CONNECTING_STATUS = 3; // utilisé dans le gestionnaire bluetooth pour identifier l'état du message
 
 
     @SuppressLint("HandlerLeak")
@@ -89,29 +128,40 @@ public class Setting extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setting);
 
-        // Récupération des composants
-        statut = (TextView)findViewById(R.id.bluetoothStatus);
-        bluetooth = (ImageButton)findViewById(R.id.scan);
-        pair = (Button)findViewById(R.id.pairdBtn);
+        // composants et configuration bluetooth
+        statut = (TextView) findViewById(R.id.bluetoothStatus);
+        bluetooth = (ImageButton) findViewById(R.id.scan2);
+        pair = (Button) findViewById(R.id.pairdBtn);
 
-        bTArrayAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1);
+        bTArrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1);
         bTAdapter = BluetoothAdapter.getDefaultAdapter(); // contrôle de la radio Bluetooth
 
+        // composants  et configuration wifi
+        wifi = (ImageButton) findViewById(R.id.wifi);
+        port = (EditText) findViewById(R.id.port);
+        ip = (EditText) findViewById(R.id.ip);
+        addIP = (Button) findViewById(R.id.buttonAdd);
+        //listeIp = (ListView)findViewById(R.id.listeIP);
 
-        if(bTAdapter == null){
+        wifiManager = (WifiManager) getApplicationContext().getSystemService(Context.WIFI_SERVICE);
+        wifiOnOff=true;
+
+
+
+        if (bTAdapter == null) {
             Log.i(TAG, "Bluetooth non supporté");
-            Toast.makeText(getApplicationContext(),"Veuillez vous munir d'un téléphone avec un Bluetooth",Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Veuillez vous munir d'un téléphone avec un Bluetooth", Toast.LENGTH_SHORT).show();
             finish();
         }
 
-        devicesListView = (ListView)findViewById(R.id.devicesListView);
+        devicesListView = (ListView) findViewById(R.id.devicesListView);
         devicesListView.setAdapter(bTArrayAdapter); // assign model to view
         devicesListView.setOnItemClickListener(mDeviceClickListener);
 
 
-        handler = new Handler(){
-            public void handleMessage(android.os.Message msg){
-                if(msg.what == MESSAGE_READ){
+        handler = new Handler() {
+            public void handleMessage(android.os.Message msg) {
+                if (msg.what == MESSAGE_READ) {
                     String readMessage = null;
                     try {
                         readMessage = new String((byte[]) msg.obj, "UTF-8");
@@ -120,11 +170,11 @@ public class Setting extends AppCompatActivity {
                     }
                 }
 
-                if(msg.what == CONNECTING_STATUS){
-                    if(msg.arg1 == 1)
-                        statut.setText("Connected to Device: " + (String)(msg.obj));
+                if (msg.what == CONNECTING_STATUS) {
+                    if (msg.arg1 == 1)
+                        statut.setText("Connexion à l'appareil : " + (String) (msg.obj));
                     else
-                        statut.setText("Connection Failed");
+                        statut.setText("Connexion échoué");
                 }
             }
         };
@@ -140,44 +190,97 @@ public class Setting extends AppCompatActivity {
         // Action sur le bouton pair
         pair.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v){
+            public void onClick(View v) {
                 listPairedDevices(v);
+            }
+        });
+
+        // Action sur le bouton wifi
+        wifi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                wifiOnOff(v);
+            }
+        });
+
+        // Action sur le bouton add
+        addIP.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                addip(v);
             }
         });
     }
 
     /**
-     * Activation / Désactivation du bluetooth
+     * Activation / Désactivation du wifi
+     *
      * @param view v
      */
-    private void bluetoothOnOff(View view){
+    private void wifiOnOff(View view) {
+        if (wifiOnOff) {
+            wifiManager.setWifiEnabled(false);
+            Toast.makeText(getApplicationContext(), "Wifi désactivé", Toast.LENGTH_SHORT).show();
+            wifi.setImageDrawable(getResources().getDrawable(R.drawable.ic_wifi_off));
+            wifiOnOff=false;
+        } else {
+            wifiManager.setWifiEnabled(true);
+            Toast.makeText(getApplicationContext(), "Wifi activé", Toast.LENGTH_SHORT).show();
+            wifi.setImageDrawable(getResources().getDrawable(R.drawable.ic_wifi));
+            wifiOnOff=true;
+
+        }
+    }
+
+    /**
+     * Ajout du port et de l'ip à la liste
+     *
+     * @param view v
+     */
+    private void addip(View view) {
+        if (!ip.getText().toString().isEmpty() && !port.getText().toString().isEmpty()) {
+            ip_text = ip.getText().toString();
+            port_text = port.getText().toString();
+            Toast.makeText(getApplicationContext(), "L'adress IP a été enregistré", Toast.LENGTH_SHORT).show();
+        }
+        else {
+            Toast.makeText(getApplicationContext(), "Veuillez selectionner une IP et un port", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+
+    /**
+     * Activation / Désactivation du bluetooth
+     *
+     * @param view v
+     */
+    private void bluetoothOnOff(View view) {
         if (!bTAdapter.isEnabled()) {
             bTAdapter.enable();
             statut.setText("Bluetooth activé");
-            Toast.makeText(getApplicationContext(),"Bluetooth activé",Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Bluetooth activé", Toast.LENGTH_SHORT).show();
             bluetooth.setImageDrawable(getResources().getDrawable(R.drawable.bluetooth_on));
-        }
-        else{
+        } else {
             bTAdapter.disable(); // désactivé
             statut.setText("Bluetooth désactivé");
-            Toast.makeText(getApplicationContext(),"Bluetooth désactivé", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Bluetooth désactivé", Toast.LENGTH_SHORT).show();
             bluetooth.setImageDrawable(getResources().getDrawable(R.drawable.bluetooth_off));
         }
     }
 
     /**
      * Affichage des pairs jumelés
+     *
      * @param view
      */
-    private void listPairedDevices(View view){
+    private void listPairedDevices(View view) {
         pairDevices = bTAdapter.getBondedDevices();
-        if(bTAdapter.isEnabled()) {
+        if (bTAdapter.isEnabled()) {
             for (BluetoothDevice device : pairDevices)
                 bTArrayAdapter.add(device.getName() + "\n" + device.getAddress());
 
             Toast.makeText(getApplicationContext(), "Afficher les appareils jumelés", Toast.LENGTH_SHORT).show();
-        }
-        else
+        } else
             Toast.makeText(getApplicationContext(), "Bluetooth non activé", Toast.LENGTH_SHORT).show();
     }
 
@@ -187,7 +290,7 @@ public class Setting extends AppCompatActivity {
     private AdapterView.OnItemClickListener mDeviceClickListener = new AdapterView.OnItemClickListener() {
         public void onItemClick(AdapterView<?> av, View v, int arg2, long arg3) {
 
-            if(!bTAdapter.isEnabled()) {
+            if (!bTAdapter.isEnabled()) {
                 Toast.makeText(getBaseContext(), "Bluetooth non activé", Toast.LENGTH_SHORT).show();
                 return;
             }
@@ -196,11 +299,10 @@ public class Setting extends AppCompatActivity {
             // Récupération de l'adresse MAC de l'appareil
             String info = ((TextView) v).getText().toString();
             final String address = info.substring(info.length() - 17);
-            final String name = info.substring(0,info.length() - 17);
+            final String name = info.substring(0, info.length() - 17);
 
             // Générer un nouveau thread pour éviter de bloquer l'interface graphique
-            new Thread()
-            {
+            new Thread() {
                 public void run() {
                     boolean fail = false;
 
@@ -225,7 +327,7 @@ public class Setting extends AppCompatActivity {
                             Toast.makeText(getBaseContext(), "Socket creation failed", Toast.LENGTH_SHORT).show();
                         }
                     }
-                    if(fail == false) {
+                    if (fail == false) {
                         mConnectedThread = new ConnectedThread(mBTSocket);
                         mConnectedThread.start();
 
@@ -242,9 +344,9 @@ public class Setting extends AppCompatActivity {
             final Method m = device.getClass().getMethod("createInsecureRfcommSocketToServiceRecord", UUID.class);
             return (BluetoothSocket) m.invoke(device, BTMODULEUUID);
         } catch (Exception e) {
-            Log.e(TAG, "Impossible de créer une connexion RFComm sécurisée",e);
+            Log.e(TAG, "Impossible de créer une connexion RFComm sécurisée", e);
         }
-        return  device.createRfcommSocketToServiceRecord(BTMODULEUUID);
+        return device.createRfcommSocketToServiceRecord(BTMODULEUUID);
     }
 
     private class ConnectedThread extends Thread {
@@ -262,7 +364,8 @@ public class Setting extends AppCompatActivity {
             try {
                 tmpIn = socket.getInputStream();
                 tmpOut = socket.getOutputStream();
-            } catch (IOException e) { }
+            } catch (IOException e) {
+            }
 
             mmInStream = tmpIn;
             mmOutStream = tmpOut;
@@ -278,7 +381,7 @@ public class Setting extends AppCompatActivity {
                 try {
                     // Lire depuis l'InputStream
                     bytes = mmInStream.available();
-                    if(bytes != 0) {
+                    if (bytes != 0) {
                         buffer = new byte[1024];
                         SystemClock.sleep(100); //pause et attendez le reste des données. Ajustez ceci en fonction de votre vitesse d'envoi.
                         bytes = mmInStream.available(); // combien d'octets sont prêts à être lus?
@@ -299,28 +402,30 @@ public class Setting extends AppCompatActivity {
             byte[] bytes = input.getBytes();           //convertit String en octets
             try {
                 mmOutStream.write(bytes);
-            } catch (IOException e) { }
+            } catch (IOException e) {
+            }
         }
 
         /* Appelez ceci depuis l'activité principale pour arrêter la connexion */
         public void cancel() {
             try {
                 mmSocket.close();
-            } catch (IOException e) { }
+            } catch (IOException e) {
+            }
         }
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
+
+
+
+
+
+
+
+
+
+
+
+
+

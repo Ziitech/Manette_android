@@ -34,7 +34,6 @@ import android.widget.Toast;
                 button_setting.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Toast.makeText(MainActivity.this, "Setting", Toast.LENGTH_LONG).show();
                         Intent i = new Intent(MainActivity.this, Setting.class);
                         startActivity(i);
                     }
