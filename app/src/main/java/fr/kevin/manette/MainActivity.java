@@ -3,7 +3,9 @@ package fr.kevin.manette;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
@@ -24,20 +26,19 @@ import android.widget.Toast;
                     @Override
                     public void onClick(View v) {
                         Toast.makeText(MainActivity.this, "Gamepad", Toast.LENGTH_LONG).show();
-                        Intent y = new Intent(MainActivity.this,Gamepad.class);
+                        Intent y = new Intent(MainActivity.this, Gamepad.class);
                         startActivity(y);
                     }
                 });
 
-                button_setting.setOnClickListener(new View.OnClickListener(){
+                button_setting.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         Toast.makeText(MainActivity.this, "Setting", Toast.LENGTH_LONG).show();
-                        Intent i = new Intent(MainActivity.this,Setting.class);
+                        Intent i = new Intent(MainActivity.this, Setting.class);
                         startActivity(i);
                     }
                 });
 
             }
-
         }
