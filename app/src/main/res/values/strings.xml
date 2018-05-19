@@ -6,4 +6,7 @@
     <string name="action_save">Save</string>
     <string name="action_setting">Setting</string>
     <string name="action_help">Aide</string>
+
+    <string name="port">6000</string>
+    <string name="ip">192.168.43.65</string>
 </resources>

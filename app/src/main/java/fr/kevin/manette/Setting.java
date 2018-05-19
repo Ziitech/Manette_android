@@ -4,16 +4,14 @@ import android.annotation.SuppressLint;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
-import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
-import android.graphics.drawable.Drawable;
+import android.content.SharedPreferences;
 import android.net.wifi.WifiManager;
-import android.net.wifi.aware.WifiAwareManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.SystemClock;
+import android.preference.PreferenceActivity;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -26,7 +24,6 @@ import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -95,9 +92,9 @@ public class Setting extends AppCompatActivity {
      */
     private Boolean wifiOnOff;
     /**
-     *  Bouton pour ajouter une adresse ip
+     *  Bouton pour save une adresse ip et le port
      */
-    private Button addIP;
+    private Button save;
     /**
      * Zone de text Ip
      */
@@ -106,15 +103,11 @@ public class Setting extends AppCompatActivity {
      * Zone de text port
      */
     private EditText port;
-    /**
-     *  IP enregistré
-     */
-    private static String ip_text;
-    /**
-     *  port enregistré
-     */
-    private static String port_text;
 
+
+    //------------------- Préférence-------------------
+    private SharedPreferences preference;
+    private SharedPreferences.Editor prefEdit;
 
 
     //#defines pour identifier les types partagés entre les fonctions d'appel
@@ -140,14 +133,17 @@ public class Setting extends AppCompatActivity {
         wifi = (ImageButton) findViewById(R.id.wifi);
         port = (EditText) findViewById(R.id.port);
         ip = (EditText) findViewById(R.id.ip);
-        addIP = (Button) findViewById(R.id.buttonAdd);
-        //listeIp = (ListView)findViewById(R.id.listeIP);
+        save = (Button) findViewById(R.id.btpSave);
 
         wifiManager = (WifiManager) getApplicationContext().getSystemService(Context.WIFI_SERVICE);
         wifiOnOff=true;
 
+        // Préférence
+        preference = PreferenceManager.getDefaultSharedPreferences(this);
+        prefEdit = preference.edit();
 
-
+        checkPreference();
+        
         if (bTAdapter == null) {
             Log.i(TAG, "Bluetooth non supporté");
             Toast.makeText(getApplicationContext(), "Veuillez vous munir d'un téléphone avec un Bluetooth", Toast.LENGTH_SHORT).show();
@@ -203,13 +199,24 @@ public class Setting extends AppCompatActivity {
             }
         });
 
-        // Action sur le bouton add
-        addIP.setOnClickListener(new View.OnClickListener() {
+        // Action sur le bouton save
+        save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                addip(v);
+                saveIP(v);
             }
         });
+    }
+
+    /**
+     * Prise en compte des préférences
+     */
+    private  void checkPreference(){
+        String ip_pref = preference.getString(getString(R.string.ip),"");
+        String port_pref = preference.getString(getString(R.string.port),"");
+
+        ip.setText(ip_pref);
+        port.setText(port_pref);
     }
 
     /**
@@ -237,15 +244,16 @@ public class Setting extends AppCompatActivity {
      *
      * @param view v
      */
-    private void addip(View view) {
-        if (!ip.getText().toString().isEmpty() && !port.getText().toString().isEmpty()) {
-            ip_text = ip.getText().toString();
-            port_text = port.getText().toString();
-            Toast.makeText(getApplicationContext(), "L'adress IP a été enregistré", Toast.LENGTH_SHORT).show();
-        }
-        else {
-            Toast.makeText(getApplicationContext(), "Veuillez selectionner une IP et un port", Toast.LENGTH_SHORT).show();
-        }
+    private void saveIP(View view) {
+        String ip_pref = ip.getText().toString();
+        prefEdit.putString(getString(R.string.ip), ip_pref);
+        prefEdit.commit();
+
+        String port_pref = port.getText().toString();
+        prefEdit.putString(getString(R.string.port), port_pref);
+        prefEdit.commit();
+
+        Toast.makeText(getApplicationContext(), "IP/PORT enregistré", Toast.LENGTH_SHORT).show();
     }
 
 
