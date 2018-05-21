@@ -113,6 +113,9 @@ public class Gamepad extends AppCompatActivity {
                 }
                 if(event.getAction() == MotionEvent.ACTION_UP){
                     button_a.setBackground(getResources().getDrawable(R.drawable.ic_a));
+
+                    ConnexionTCP b2 = new ConnexionTCP(getString(R.string.ip),getString(R.string.port));
+                    b2.execute("s");
                 }
                 return true;
             }
@@ -128,6 +131,9 @@ public class Gamepad extends AppCompatActivity {
                 }
                 if(event.getAction() == MotionEvent.ACTION_UP){
                     button_b.setBackground(getResources().getDrawable(R.drawable.ic_b));
+
+                    ConnexionTCP b3 = new ConnexionTCP(getString(R.string.ip),getString(R.string.port));
+                    b3.execute("s");
                 }
                 return true;
             }
@@ -143,6 +149,9 @@ public class Gamepad extends AppCompatActivity {
                 }
                 if(event.getAction() == MotionEvent.ACTION_UP){
                     button_x.setBackground(getResources().getDrawable(R.drawable.ic_x));
+
+                    ConnexionTCP b4 = new ConnexionTCP(getString(R.string.ip),getString(R.string.port));
+                    b4.execute("s");
                 }
                 return true;
             }
@@ -158,6 +167,9 @@ public class Gamepad extends AppCompatActivity {
                 }
                 if(event.getAction() == MotionEvent.ACTION_UP){
                     button_y.setBackground(getResources().getDrawable(R.drawable.ic_y));
+
+                    ConnexionTCP b5 = new ConnexionTCP(getString(R.string.ip),getString(R.string.port));
+                    b5.execute("s");
                 }
                 return true;
             }

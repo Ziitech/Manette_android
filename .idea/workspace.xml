@@ -34,12 +34,20 @@
       <file leaf-file-name="Gamepad.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/fr/kevin/manette/Gamepad.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="462">
-              <caret line="41" column="60" lean-forward="true" selection-start-line="41" selection-start-column="60" selection-end-line="42" selection-end-column="34" />
+            <state relative-caret-position="363">
+              <caret line="117" column="22" lean-forward="false" selection-start-line="117" selection-start-column="22" selection-end-line="117" selection-end-column="22" />
               <folding>
                 <element signature="e#3009#3031#0" expanded="true" />
                 <element signature="e#3299#3321#0" expanded="true" />
                 <element signature="e#3322#3346#0" expanded="true" />
+                <element signature="e#5798#5820#0" expanded="true" />
+                <element signature="e#5821#5845#0" expanded="true" />
+                <element signature="e#6639#6661#0" expanded="true" />
+                <element signature="e#6662#6686#0" expanded="true" />
+                <element signature="e#7480#7502#0" expanded="true" />
+                <element signature="e#7503#7527#0" expanded="true" />
+                <element signature="e#8321#8343#0" expanded="true" />
+                <element signature="e#8344#8368#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -74,7 +82,7 @@
         <entry file="file://$PROJECT_DIR$/app/src/main/java/fr/kevin/manette/JoyStick.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-189">
-              <caret line="89" column="32" lean-forward="true" selection-start-line="89" selection-start-column="32" selection-end-line="89" selection-end-column="32" />
+              <caret line="89" column="32" lean-forward="false" selection-start-line="89" selection-start-column="32" selection-end-line="89" selection-end-column="32" />
               <folding />
             </state>
           </provider>
@@ -2116,13 +2124,13 @@
         <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/fr/kevin/manette/MainActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/fr/kevin/manette/Setting.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/fr/kevin/manette/Gamepad.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/fr/kevin/manette/ConnexionTCP.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_gamepad.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/fr/kevin/manette/Gamepad.java" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-8" />
     <option name="width" value="976" />
     <option name="height" value="1038" />
@@ -2431,10 +2439,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-9" y="-9" width="1938" height="1048" extended-state="7" />
+    <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Android Profiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.3293979" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Android Profiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3293979" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3293979" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -2482,6 +2490,14 @@
             <element signature="e#3009#3031#0" expanded="true" />
             <element signature="e#3299#3321#0" expanded="true" />
             <element signature="e#3322#3346#0" expanded="true" />
+            <element signature="e#5798#5820#0" expanded="true" />
+            <element signature="e#5821#5845#0" expanded="true" />
+            <element signature="e#6639#6661#0" expanded="true" />
+            <element signature="e#6662#6686#0" expanded="true" />
+            <element signature="e#7480#7502#0" expanded="true" />
+            <element signature="e#7503#7527#0" expanded="true" />
+            <element signature="e#8321#8343#0" expanded="true" />
+            <element signature="e#8344#8368#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2513,6 +2529,14 @@
             <element signature="e#3009#3031#0" expanded="true" />
             <element signature="e#3299#3321#0" expanded="true" />
             <element signature="e#3322#3346#0" expanded="true" />
+            <element signature="e#5798#5820#0" expanded="true" />
+            <element signature="e#5821#5845#0" expanded="true" />
+            <element signature="e#6639#6661#0" expanded="true" />
+            <element signature="e#6662#6686#0" expanded="true" />
+            <element signature="e#7480#7502#0" expanded="true" />
+            <element signature="e#7503#7527#0" expanded="true" />
+            <element signature="e#8321#8343#0" expanded="true" />
+            <element signature="e#8344#8368#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2541,6 +2565,14 @@
             <element signature="e#3009#3031#0" expanded="true" />
             <element signature="e#3299#3321#0" expanded="true" />
             <element signature="e#3322#3346#0" expanded="true" />
+            <element signature="e#5798#5820#0" expanded="true" />
+            <element signature="e#5821#5845#0" expanded="true" />
+            <element signature="e#6639#6661#0" expanded="true" />
+            <element signature="e#6662#6686#0" expanded="true" />
+            <element signature="e#7480#7502#0" expanded="true" />
+            <element signature="e#7503#7527#0" expanded="true" />
+            <element signature="e#8321#8343#0" expanded="true" />
+            <element signature="e#8344#8368#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2560,7 +2592,7 @@
         <state relative-caret-position="273">
           <caret line="23" column="19" lean-forward="false" selection-start-line="23" selection-start-column="19" selection-end-line="23" selection-end-column="19" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -2581,6 +2613,14 @@
             <element signature="e#3009#3031#0" expanded="true" />
             <element signature="e#3299#3321#0" expanded="true" />
             <element signature="e#3322#3346#0" expanded="true" />
+            <element signature="e#5798#5820#0" expanded="true" />
+            <element signature="e#5821#5845#0" expanded="true" />
+            <element signature="e#6639#6661#0" expanded="true" />
+            <element signature="e#6662#6686#0" expanded="true" />
+            <element signature="e#7480#7502#0" expanded="true" />
+            <element signature="e#7503#7527#0" expanded="true" />
+            <element signature="e#8321#8343#0" expanded="true" />
+            <element signature="e#8344#8368#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2600,7 +2640,7 @@
         <state relative-caret-position="483">
           <caret line="23" column="19" lean-forward="false" selection-start-line="23" selection-start-column="19" selection-end-line="23" selection-end-column="19" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -2625,7 +2665,7 @@
         <state relative-caret-position="294">
           <caret line="24" column="43" lean-forward="false" selection-start-line="24" selection-start-column="43" selection-end-line="24" selection-end-column="43" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -2648,6 +2688,14 @@
             <element signature="e#3009#3031#0" expanded="true" />
             <element signature="e#3299#3321#0" expanded="true" />
             <element signature="e#3322#3346#0" expanded="true" />
+            <element signature="e#5798#5820#0" expanded="true" />
+            <element signature="e#5821#5845#0" expanded="true" />
+            <element signature="e#6639#6661#0" expanded="true" />
+            <element signature="e#6662#6686#0" expanded="true" />
+            <element signature="e#7480#7502#0" expanded="true" />
+            <element signature="e#7503#7527#0" expanded="true" />
+            <element signature="e#8321#8343#0" expanded="true" />
+            <element signature="e#8344#8368#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2665,7 +2713,7 @@
         <state relative-caret-position="315">
           <caret line="18" column="52" lean-forward="false" selection-start-line="18" selection-start-column="52" selection-end-line="18" selection-end-column="52" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -2678,6 +2726,14 @@
             <element signature="e#3009#3031#0" expanded="true" />
             <element signature="e#3299#3321#0" expanded="true" />
             <element signature="e#3322#3346#0" expanded="true" />
+            <element signature="e#5798#5820#0" expanded="true" />
+            <element signature="e#5821#5845#0" expanded="true" />
+            <element signature="e#6639#6661#0" expanded="true" />
+            <element signature="e#6662#6686#0" expanded="true" />
+            <element signature="e#7480#7502#0" expanded="true" />
+            <element signature="e#7503#7527#0" expanded="true" />
+            <element signature="e#8321#8343#0" expanded="true" />
+            <element signature="e#8344#8368#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2698,6 +2754,14 @@
             <element signature="e#3009#3031#0" expanded="true" />
             <element signature="e#3299#3321#0" expanded="true" />
             <element signature="e#3322#3346#0" expanded="true" />
+            <element signature="e#5798#5820#0" expanded="true" />
+            <element signature="e#5821#5845#0" expanded="true" />
+            <element signature="e#6639#6661#0" expanded="true" />
+            <element signature="e#6662#6686#0" expanded="true" />
+            <element signature="e#7480#7502#0" expanded="true" />
+            <element signature="e#7503#7527#0" expanded="true" />
+            <element signature="e#8321#8343#0" expanded="true" />
+            <element signature="e#8344#8368#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2707,7 +2771,7 @@
         <state relative-caret-position="399">
           <caret line="22" column="27" lean-forward="true" selection-start-line="22" selection-start-column="27" selection-end-line="22" selection-end-column="27" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -2801,7 +2865,7 @@
         <state relative-caret-position="588">
           <caret line="28" column="28" lean-forward="true" selection-start-line="28" selection-start-column="28" selection-end-line="28" selection-end-column="28" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -2842,7 +2906,7 @@
     <entry file="file://$PROJECT_DIR$/app/src/main/java/fr/kevin/manette/JoyStick.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-189">
-          <caret line="89" column="32" lean-forward="true" selection-start-line="89" selection-start-column="32" selection-end-line="89" selection-end-column="32" />
+          <caret line="89" column="32" lean-forward="false" selection-start-line="89" selection-start-column="32" selection-end-line="89" selection-end-column="32" />
           <folding />
         </state>
       </provider>
@@ -2867,12 +2931,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/fr/kevin/manette/Gamepad.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="462">
-          <caret line="41" column="60" lean-forward="true" selection-start-line="41" selection-start-column="60" selection-end-line="42" selection-end-column="34" />
+        <state relative-caret-position="363">
+          <caret line="117" column="22" lean-forward="false" selection-start-line="117" selection-start-column="22" selection-end-line="117" selection-end-column="22" />
           <folding>
             <element signature="e#3009#3031#0" expanded="true" />
             <element signature="e#3299#3321#0" expanded="true" />
             <element signature="e#3322#3346#0" expanded="true" />
+            <element signature="e#5798#5820#0" expanded="true" />
+            <element signature="e#5821#5845#0" expanded="true" />
+            <element signature="e#6639#6661#0" expanded="true" />
+            <element signature="e#6662#6686#0" expanded="true" />
+            <element signature="e#7480#7502#0" expanded="true" />
+            <element signature="e#7503#7527#0" expanded="true" />
+            <element signature="e#8321#8343#0" expanded="true" />
+            <element signature="e#8344#8368#0" expanded="true" />
           </folding>
         </state>
       </provider>
