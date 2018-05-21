@@ -10,7 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 
-public class JoyStickClass {
+public class JoyStick {
 	public static final int STICK_NONE = 0;
 	public static final int STICK_UP = 1;
 	public static final int STICK_UPRIGHT = 2;
@@ -39,7 +39,7 @@ public class JoyStickClass {
 	
 	private boolean touch_state = false;
 	
-	public JoyStickClass (Context context, ViewGroup layout, int stick_res_id) {
+	public JoyStick(Context context, ViewGroup layout, int stick_res_id) {
 		mContext = context;
 
 		stick = BitmapFactory.decodeResource(mContext.getResources(),

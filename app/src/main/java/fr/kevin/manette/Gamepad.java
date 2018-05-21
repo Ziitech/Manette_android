@@ -14,9 +14,9 @@ import android.widget.TextView;
 public class Gamepad extends AppCompatActivity {
 
     private RelativeLayout layout_joystick;
-    private TextView textView1, textView2, textView3, textView5;
+    private TextView textView1, textView2, textView5;
     private ImageButton button_a,button_b,button_x,button_y;
-    private JoyStickClass js;
+    private JoyStick js;
 
 
     @Override
@@ -38,7 +38,7 @@ public class Gamepad extends AppCompatActivity {
 
         layout_joystick = (RelativeLayout)findViewById(R.id.layout_joystick);
 
-        js = new JoyStickClass(getApplicationContext()
+        js = new JoyStick(getApplicationContext()
                 , layout_joystick, R.drawable.image_button);
         js.setStickSize(150, 150);
         js.setLayoutSize(500, 500);
@@ -56,39 +56,39 @@ public class Gamepad extends AppCompatActivity {
                     textView2.setText("Y : " + String.valueOf(js.getY()));
 
                     int direction = js.get8Direction();
-                    if(direction == JoyStickClass.STICK_UP) {
+                    if(direction == JoyStick.STICK_UP) {
                         textView5.setText("Direction : Up");
                         ConnexionTCP b1 = new ConnexionTCP(getString(R.string.ip),getString(R.string.port));
                         b1.execute("u");
-                    } else if(direction == JoyStickClass.STICK_UPRIGHT) {
+                    } else if(direction == JoyStick.STICK_UPRIGHT) {
                         textView5.setText("Direction : Up Right");
                         ConnexionTCP b1 = new ConnexionTCP(getString(R.string.ip),getString(R.string.port));
                         b1.execute("ur");
-                    } else if(direction == JoyStickClass.STICK_RIGHT) {
+                    } else if(direction == JoyStick.STICK_RIGHT) {
                         textView5.setText("Direction : Right");
                         ConnexionTCP b1 = new ConnexionTCP(getString(R.string.ip),getString(R.string.port));
                         b1.execute("r");
-                    } else if(direction == JoyStickClass.STICK_DOWNRIGHT) {
+                    } else if(direction == JoyStick.STICK_DOWNRIGHT) {
                         textView5.setText("Direction : Down Right");
                         ConnexionTCP b1 = new ConnexionTCP(getString(R.string.ip),getString(R.string.port));
                         b1.execute("dr");
-                    } else if(direction == JoyStickClass.STICK_DOWN) {
+                    } else if(direction == JoyStick.STICK_DOWN) {
                         textView5.setText("Direction : Down");
                         ConnexionTCP b1 = new ConnexionTCP(getString(R.string.ip),getString(R.string.port));
                         b1.execute("d");
-                    } else if(direction == JoyStickClass.STICK_DOWNLEFT) {
+                    } else if(direction == JoyStick.STICK_DOWNLEFT) {
                         textView5.setText("Direction : Down Left");
                         ConnexionTCP b1 = new ConnexionTCP(getString(R.string.ip),getString(R.string.port));
                         b1.execute("dl");
-                    } else if(direction == JoyStickClass.STICK_LEFT) {
+                    } else if(direction == JoyStick.STICK_LEFT) {
                         textView5.setText("Direction : Left");
                         ConnexionTCP b1 = new ConnexionTCP(getString(R.string.ip),getString(R.string.port));
                         b1.execute("l");
-                    } else if(direction == JoyStickClass.STICK_UPLEFT) {
+                    } else if(direction == JoyStick.STICK_UPLEFT) {
                         textView5.setText("Direction : Up Left");
                         ConnexionTCP b1 = new ConnexionTCP(getString(R.string.ip),getString(R.string.port));
                         b1.execute("ul");
-                    } else if(direction == JoyStickClass.STICK_NONE) {
+                    } else if(direction == JoyStick.STICK_NONE) {
                         textView5.setText("Direction : Center");
                         ConnexionTCP b1 = new ConnexionTCP(getString(R.string.ip),getString(R.string.port));
                         b1.execute("c");

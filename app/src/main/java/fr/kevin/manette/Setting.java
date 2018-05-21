@@ -240,7 +240,7 @@ public class Setting extends AppCompatActivity {
     }
 
     /**
-     * Ajout du port et de l'ip à la liste
+     * Sauvegarde du port et de l'ip
      *
      * @param view v
      */
